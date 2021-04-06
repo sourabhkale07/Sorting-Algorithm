@@ -1,0 +1,48 @@
+#include<iostream>
+using namespace std;
+
+void printarray(int x[],int n){
+    for (int i=0;i<n;i++){
+        cout<<x[i]<<" ";
+    }
+}
+
+void swap(int *a,int *b){
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+
+void bubblesort(int a[],int n){
+    
+    int i,j;
+    for(i=0;i<n;i++){
+        for(j=0;j<n-i-1;j++){            // j<(n-i-1)  to avoid unecessary swap because after each pass largest element takes correct position i.e. last position
+            if(a[j]>a[j+1]){
+                swap(&a[j],&a[j+1]);
+            }
+            
+        }
+    }
+}
+int main(){
+    cout<<"Enter the number of elements in array";
+    int n;
+    cin>>n;
+    int a[n];
+    int i;
+    for (int i = 0;i<n;i++){
+        cout<<"Enter "<<i+1<<"  element of array ";
+        cin>>a[i];
+    }
+    
+    cout<<"Given unsorted array is ";
+    printarray(a,n);
+    
+    bubblesort(a,n);
+    
+    cout<<"Sorted array is ";
+    printarray(a,n);
+} 
